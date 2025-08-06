@@ -1,0 +1,13 @@
+run = "npm run start"
+entrypoint = "server.cjs"
+modules = ["nodejs-20:v8-20230920-bd784b9"]
+
+[nix]
+channel = "stable-23_05"
+
+[deployment]
+run = ["node", "server.cjs"]
+
+[[ports]]
+localPort = 3001
+externalPort = 80
