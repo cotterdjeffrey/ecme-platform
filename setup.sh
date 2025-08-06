@@ -50,7 +50,7 @@ echo "🚀 Starting ECME Platform..."
 sleep 1
 
 # Start servers
-node server.cjs > server.log 2>&1 &
+node server-db.cjs > server.log 2>&1 &
 SERVER_PID=$!
 npm run dev > frontend.log 2>&1 &
 FRONTEND_PID=$!

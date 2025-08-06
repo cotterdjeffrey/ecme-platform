@@ -56,6 +56,11 @@ class SocketService {
             })
         })
         
+        this.socket.on('message-history', (messages: Message[]) => {
+            console.log(`▪ Loaded ${messages.length} messages from history`)
+            this.emit('message-history', messages)
+        })
+        
         this.socket.on('new-message', (message: Message) => {
             this.emit('message', message)
         })

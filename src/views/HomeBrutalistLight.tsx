@@ -31,6 +31,10 @@ const HomeBrutalistLight = () => {
             setMessages(prev => [...prev, message])
         }
         
+        const handleMessageHistory = (messages: Message[]) => {
+            setMessages(messages)
+        }
+        
         const handleNetworkUpdate = (data: any) => {
             setNetworkUsers(data.users)
             setCircuitState(prev => ({
@@ -61,6 +65,7 @@ const HomeBrutalistLight = () => {
         }
         
         socketService.on('message', handleMessage)
+        socketService.on('message-history', handleMessageHistory)
         socketService.on('network-update', handleNetworkUpdate)
         socketService.on('resonance-update', handleResonanceUpdate)
         socketService.on('mesh-activated', handleMeshActivated)
@@ -68,6 +73,7 @@ const HomeBrutalistLight = () => {
         
         return () => {
             socketService.off('message', handleMessage)
+            socketService.off('message-history', handleMessageHistory)
             socketService.off('network-update', handleNetworkUpdate)
             socketService.off('resonance-update', handleResonanceUpdate)
             socketService.off('mesh-activated', handleMeshActivated)
